@@ -566,21 +566,8 @@
         linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.04));
     }
 
-    .icon {
-      width: 46px;
-      height: 46px;
-      border-radius: 16px;
-      display: grid;
-      place-items: center;
-      margin-bottom: 22px;
-      background: rgba(184, 115, 74, 0.12);
-      color: var(--accent-light);
-      border: 1px solid rgba(184, 115, 74, 0.24);
-      font-weight: 950;
-    }
-
     .selected-build {
-      min-height: 320px;
+      min-height: 500px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -589,18 +576,44 @@
       color: inherit;
       text-decoration: none;
       cursor: pointer;
+      padding: 16px;
     }
 
-    .selected-build::before {
+    .build-preview {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.04);
+      margin-bottom: 24px;
+      position: relative;
+    }
+
+    .build-preview::after {
       content: "";
       position: absolute;
       inset: 0;
-      background: radial-gradient(circle at top right, rgba(184, 115, 74, 0.16), transparent 18rem);
+      background: linear-gradient(180deg, transparent, rgba(5, 7, 12, 0.12));
       pointer-events: none;
     }
 
-    .selected-build:hover .build-bottom span:last-child {
-      transform: translateX(4px);
+    .build-preview img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 500ms ease;
+    }
+
+    .selected-build:hover .build-preview img {
+      transform: scale(1.045);
+    }
+
+    .build-content {
+      padding: 0 12px 12px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
     }
 
     .build-tag {
@@ -618,7 +631,7 @@
     }
 
     .build-bottom {
-      margin-top: 34px;
+      margin-top: auto;
       padding-top: 18px;
       border-top: 1px solid rgba(255, 255, 255, 0.09);
       display: flex;
@@ -632,6 +645,10 @@
       color: var(--accent-light);
       font-weight: 850;
       transition: transform var(--transition);
+    }
+
+    .selected-build:hover .build-bottom span:last-child {
+      transform: translateX(4px);
     }
 
     .offer-panel {
@@ -678,6 +695,60 @@
     .offer-point strong {
       display: block;
       margin-bottom: 2px;
+    }
+
+    .service-card {
+      min-height: 300px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::after {
+      content: "";
+      position: absolute;
+      width: 160px;
+      height: 160px;
+      right: -60px;
+      top: -60px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(184, 115, 74, 0.18), transparent 70%);
+      pointer-events: none;
+    }
+
+    .service-icon {
+      width: 62px;
+      height: 62px;
+      border-radius: 20px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 22px;
+      background: rgba(184, 115, 74, 0.12);
+      color: var(--accent-light);
+      border: 1px solid rgba(184, 115, 74, 0.26);
+    }
+
+    .service-icon svg {
+      width: 31px;
+      height: 31px;
+      stroke: currentColor;
+    }
+
+    .service-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 20px;
+    }
+
+    .service-chips span {
+      display: inline-flex;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.055);
+      border: 1px solid rgba(255, 255, 255, 0.085);
+      color: #d8dee8;
+      font-size: 0.78rem;
+      font-weight: 750;
     }
 
     .pricing-grid {
@@ -727,12 +798,15 @@
       margin-bottom: 10px;
     }
 
+    .price-main {
+      margin: 24px 0 8px;
+    }
+
     .price {
-      font-size: 3.1rem;
+      font-size: 3.05rem;
       line-height: 1;
       letter-spacing: -0.07em;
       font-weight: 950;
-      margin: 22px 0 8px;
     }
 
     .price span {
@@ -742,10 +816,32 @@
       font-weight: 800;
     }
 
-    .after-price {
+    .price-period {
+      color: var(--muted);
+      font-weight: 800;
+      margin-top: 8px;
+    }
+
+    .maintenance-box {
+      margin: 20px 0 8px;
+      padding: 16px;
+      border-radius: 18px;
+      background: rgba(184, 115, 74, 0.105);
+      border: 1px solid rgba(184, 115, 74, 0.24);
+    }
+
+    .maintenance-box strong {
+      display: block;
       color: var(--accent-light);
+      font-size: 1.25rem;
+      letter-spacing: -0.03em;
+      margin-bottom: 4px;
+    }
+
+    .build-cost {
+      color: #d8dee8;
       font-weight: 850;
-      margin-bottom: 24px;
+      margin-top: 10px;
     }
 
     .features {
@@ -1094,6 +1190,10 @@
         grid-template-columns: 1fr;
       }
 
+      .selected-build {
+        min-height: auto;
+      }
+
       .offer-panel,
       .contact-panel {
         padding: 24px;
@@ -1211,7 +1311,7 @@
                   <span class="dot"></span>
                   <span class="dot"></span>
                   <span class="dot"></span>
-                  <div class="browser-url">divitidevelopments.co.uk</div>
+                  <div class="browser-url">diviti.uk</div>
                 </div>
 
                 <div class="mock-site">
@@ -1259,56 +1359,64 @@
         <div class="container">
           <div class="section-header">
             <span class="eyebrow">Selected builds</span>
-            <h2>Websites that look like the business is worth trusting.</h2>
+            <h2>Proof that the standard is already high.</h2>
             <p>
-              Your website is usually the first impression. If it looks old, slow or thrown together,
-              people assume the same about the business.
+              Your website is usually the first impression. It should make people trust the business before they have even spoken to you.
             </p>
           </div>
 
           <div class="grid-3">
             <a class="card selected-build" href="https://retfordhall.co.uk/" target="_blank" rel="noopener">
-              <div>
+              <div class="build-preview">
+                <img src="assets/retford-hall-preview.png" alt="West Retford Hall brand preview">
+              </div>
+              <div class="build-content">
                 <span class="build-tag">Property</span>
                 <h3>Retford Hall</h3>
                 <p>
                   A modern rebuild for a local office building, focused on credibility, clear enquiries
                   and a cleaner presentation of the space.
                 </p>
-              </div>
-              <div class="build-bottom">
-                <span>Local business</span>
-                <span>View site →</span>
+                <div class="build-bottom">
+                  <span>Local business</span>
+                  <span>View site →</span>
+                </div>
               </div>
             </a>
 
             <a class="card selected-build" href="https://pumpbar.uk/" target="_blank" rel="noopener">
-              <div>
+              <div class="build-preview">
+                <img src="assets/pump-bar-preview.png" alt="Pump Bar brand preview">
+              </div>
+              <div class="build-content">
                 <span class="build-tag">Product</span>
                 <h3>Pump Bar</h3>
                 <p>
                   A sharp landing page for a functional chocolate brand, built to capture interest
                   and give the product a premium first impression.
                 </p>
-              </div>
-              <div class="build-bottom">
-                <span>Startup brand</span>
-                <span>View site →</span>
+                <div class="build-bottom">
+                  <span>Startup brand</span>
+                  <span>View site →</span>
+                </div>
               </div>
             </a>
 
             <a class="card selected-build" href="https://himitsuevents.com/" target="_blank" rel="noopener">
-              <div>
+              <div class="build-preview">
+                <img src="assets/himitsu-events-preview.png" alt="Himitsu Events brand preview">
+              </div>
+              <div class="build-content">
                 <span class="build-tag">Events</span>
                 <h3>Himitsu Events</h3>
                 <p>
                   A clean website for an events business, designed to make services clear and give
                   clients a simple route to enquire.
                 </p>
-              </div>
-              <div class="build-bottom">
-                <span>Service business</span>
-                <span>View site →</span>
+                <div class="build-bottom">
+                  <span>Service business</span>
+                  <span>View site →</span>
+                </div>
               </div>
             </a>
           </div>
@@ -1379,40 +1487,107 @@
           </div>
 
           <div class="grid-3">
-            <div class="card">
-              <div class="icon">01</div>
+            <div class="card service-card">
+              <div class="service-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="4" width="18" height="14" rx="2"></rect>
+                  <path d="M7 8h7"></path>
+                  <path d="M7 12h10"></path>
+                  <path d="M7 16h5"></path>
+                  <path d="M9 21h6"></path>
+                </svg>
+              </div>
               <h3>Website design</h3>
               <p>Premium layouts, strong first impressions and clear sections that guide visitors towards action.</p>
+              <div class="service-chips">
+                <span>Premium look</span>
+                <span>Mobile-first</span>
+              </div>
             </div>
 
-            <div class="card">
-              <div class="icon">02</div>
+            <div class="card service-card">
+              <div class="service-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M8 9l-4 3 4 3"></path>
+                  <path d="M16 9l4 3-4 3"></path>
+                  <path d="M14 4l-4 16"></path>
+                </svg>
+              </div>
               <h3>Custom development</h3>
               <p>Fast, responsive, mobile-first builds coded cleanly and deployed properly.</p>
+              <div class="service-chips">
+                <span>HTML</span>
+                <span>CSS</span>
+                <span>JavaScript</span>
+              </div>
             </div>
 
-            <div class="card">
-              <div class="icon">03</div>
+            <div class="card service-card">
+              <div class="service-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 4h14"></path>
+                  <path d="M5 8h10"></path>
+                  <path d="M5 12h14"></path>
+                  <path d="M5 16h8"></path>
+                  <path d="M5 20h11"></path>
+                </svg>
+              </div>
               <h3>Copy and structure</h3>
               <p>Sharper headlines, cleaner service explanations and less waffle across the whole site.</p>
+              <div class="service-chips">
+                <span>Clear offer</span>
+                <span>Better CTAs</span>
+              </div>
             </div>
 
-            <div class="card">
-              <div class="icon">04</div>
+            <div class="card service-card">
+              <div class="service-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M6 18h12a4 4 0 0 0 0-8 6 6 0 0 0-11.6-1.8A5 5 0 0 0 6 18z"></path>
+                  <path d="M12 13v6"></path>
+                  <path d="M9 16l3 3 3-3"></path>
+                </svg>
+              </div>
               <h3>Hosting setup</h3>
               <p>Deployment, domain connection, SSL and basic technical setup handled for you.</p>
+              <div class="service-chips">
+                <span>Netlify</span>
+                <span>SSL</span>
+                <span>Domains</span>
+              </div>
             </div>
 
-            <div class="card">
-              <div class="icon">05</div>
+            <div class="card service-card">
+              <div class="service-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 12a8 8 0 1 1-2.35-5.65"></path>
+                  <path d="M20 4v6h-6"></path>
+                  <path d="M12 8v4l3 2"></path>
+                </svg>
+              </div>
               <h3>Maintenance</h3>
               <p>Ongoing hosting, checks, small content updates and minor edits included.</p>
+              <div class="service-chips">
+                <span>Small edits</span>
+                <span>Updates</span>
+              </div>
             </div>
 
-            <div class="card">
-              <div class="icon">06</div>
+            <div class="card service-card">
+              <div class="service-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="10" cy="10" r="5"></circle>
+                  <path d="M14 14l5 5"></path>
+                  <path d="M8 10h4"></path>
+                  <path d="M10 8v4"></path>
+                </svg>
+              </div>
               <h3>SEO basics</h3>
               <p>Page titles, descriptions, clean structure and local search foundations included from the start.</p>
+              <div class="service-chips">
+                <span>Search-ready</span>
+                <span>Local SEO</span>
+              </div>
             </div>
           </div>
         </div>
@@ -1424,7 +1599,7 @@
             <span class="eyebrow">Pricing</span>
             <h2>Premium websites without agency pricing.</h2>
             <p>
-              Simple monthly pricing. Build, launch, hosting, maintenance and small updates included.
+              Clear monthly pricing. The higher rate covers the build over the first 5 months, then it drops to an ongoing maintenance fee.
             </p>
           </div>
 
@@ -1433,8 +1608,17 @@
               <div class="price-name">Starter</div>
               <p>Best for small local businesses that need a sharp online presence.</p>
 
-              <div class="price">£99<span>/month</span></div>
-              <div class="after-price">For 5 months, then £39/month maintenance</div>
+              <div class="price-main">
+                <div class="price">£99<span>/month</span></div>
+                <div class="price-period">for the first 5 months</div>
+              </div>
+
+              <div class="maintenance-box">
+                <strong>Then £39/month ongoing</strong>
+                <p>Hosting, maintenance and small updates after launch.</p>
+              </div>
+
+              <p class="build-cost">£495 total build cost, spread over 5 months.</p>
 
               <ul class="features">
                 <li>One-page premium website</li>
@@ -1454,8 +1638,17 @@
               <div class="price-name">Business</div>
               <p>Best for businesses that want a fuller, more credible site.</p>
 
-              <div class="price">£149<span>/month</span></div>
-              <div class="after-price">For 5 months, then £49/month maintenance</div>
+              <div class="price-main">
+                <div class="price">£149<span>/month</span></div>
+                <div class="price-period">for the first 5 months</div>
+              </div>
+
+              <div class="maintenance-box">
+                <strong>Then £49/month ongoing</strong>
+                <p>Hosting, maintenance and small updates after launch.</p>
+              </div>
+
+              <p class="build-cost">£745 total build cost, spread over 5 months.</p>
 
               <ul class="features">
                 <li>Multi-section business website</li>
@@ -1473,8 +1666,17 @@
               <div class="price-name">Premium</div>
               <p>Best for businesses that want a high-end flagship website.</p>
 
-              <div class="price">£249<span>/month</span></div>
-              <div class="after-price">For 5 months, then £79/month maintenance</div>
+              <div class="price-main">
+                <div class="price">£249<span>/month</span></div>
+                <div class="price-period">for the first 5 months</div>
+              </div>
+
+              <div class="maintenance-box">
+                <strong>Then £79/month ongoing</strong>
+                <p>Hosting, maintenance and priority small updates after launch.</p>
+              </div>
+
+              <p class="build-cost">£1,245 total build cost, spread over 5 months.</p>
 
               <ul class="features">
                 <li>Premium bespoke design</li>
@@ -1490,7 +1692,7 @@
           </div>
 
           <p class="small-note">
-            Pricing is designed for straightforward local business websites. More complex functionality can be quoted separately.
+            No payment is due until you’re happy and the website is live. More complex functionality can be quoted separately.
           </p>
         </div>
       </section>
@@ -1584,6 +1786,16 @@
               </button>
               <div class="faq-answer">
                 <p>Yes. There is no build fee until you’re happy and the website is live. The monthly plan starts after launch.</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                <span>Is the price for the whole year?</span>
+                <span>+</span>
+              </button>
+              <div class="faq-answer">
+                <p>No. The higher monthly price is only for the first 5 months while the build cost is being spread out. After that, it drops to the ongoing maintenance fee shown on each package.</p>
               </div>
             </div>
 
