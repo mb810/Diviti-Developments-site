@@ -1,4 +1,4 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -13,10 +13,12 @@
       --bg-soft: #0b1623;
       --text: #f6f6f4;
       --muted: #9aa6b8;
+      --muted-2: #697386;
+      --line: rgba(255, 255, 255, 0.12);
       --accent: #b8734a;
       --accent-light: #e0a15f;
       --accent-dark: #70411f;
-      --line: rgba(255, 255, 255, 0.12);
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
     }
 
     * {
@@ -32,51 +34,103 @@
       padding: 24px;
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background:
-        radial-gradient(circle at top left, rgba(184, 115, 74, 0.18), transparent 32rem),
-        radial-gradient(circle at bottom right, rgba(47, 128, 237, 0.08), transparent 28rem),
-        linear-gradient(180deg, var(--bg), var(--bg-soft));
+        radial-gradient(circle at top left, rgba(184, 115, 74, 0.18), transparent 34rem),
+        radial-gradient(circle at bottom right, rgba(47, 128, 237, 0.08), transparent 30rem),
+        linear-gradient(180deg, #05070c 0%, #08111c 55%, #05070c 100%);
       color: var(--text);
       text-align: center;
+      overflow: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 72px 72px;
+      mask-image: radial-gradient(circle at center, black, transparent 72%);
+      pointer-events: none;
     }
 
     .card {
-      width: min(620px, 100%);
-      padding: 44px;
-      border-radius: 32px;
+      width: min(720px, 100%);
+      position: relative;
+      padding: clamp(32px, 6vw, 58px);
+      border-radius: 34px;
       border: 1px solid var(--line);
       background:
-        radial-gradient(circle at top, rgba(184, 115, 74, 0.14), transparent 22rem),
-        rgba(255, 255, 255, 0.045);
-      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+        radial-gradient(circle at top, rgba(184, 115, 74, 0.16), transparent 24rem),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.035));
+      box-shadow: var(--shadow);
+      overflow: hidden;
     }
 
-    .mark {
-      width: 58px;
-      height: 58px;
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(224, 161, 95, 0.7), transparent);
+    }
+
+    .brand-logo {
+      width: min(280px, 82vw);
+      margin: 0 auto 38px;
+      display: block;
+    }
+
+    .brand-logo svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .success-mark {
+      width: 72px;
+      height: 72px;
       margin: 0 auto 26px;
-      border-radius: 20px;
+      border-radius: 24px;
       display: grid;
       place-items: center;
-      background: linear-gradient(135deg, var(--accent-light), var(--accent), var(--accent-dark));
-      color: #090805;
-      font-weight: 950;
-      font-size: 1.4rem;
-      box-shadow: 0 18px 45px rgba(184, 115, 74, 0.25);
+      background: rgba(184, 115, 74, 0.12);
+      border: 1px solid rgba(184, 115, 74, 0.32);
+      color: var(--accent-light);
+      box-shadow: 0 18px 45px rgba(184, 115, 74, 0.16);
+    }
+
+    .success-mark svg {
+      width: 34px;
+      height: 34px;
+      stroke: currentColor;
+      stroke-width: 2.4;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
     }
 
     h1 {
-      font-size: clamp(2.7rem, 7vw, 5.2rem);
+      font-size: clamp(3rem, 8vw, 5.8rem);
       line-height: 0.95;
-      letter-spacing: -0.065em;
-      margin-bottom: 18px;
+      letter-spacing: -0.07em;
+      margin-bottom: 20px;
     }
 
     p {
       color: var(--muted);
-      font-size: 1.08rem;
+      font-size: clamp(1rem, 2vw, 1.18rem);
       line-height: 1.65;
-      max-width: 460px;
+      max-width: 520px;
       margin: 0 auto;
+    }
+
+    .actions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 34px;
     }
 
     a {
@@ -84,36 +138,111 @@
       align-items: center;
       justify-content: center;
       min-height: 52px;
-      margin-top: 30px;
       padding: 0 22px;
       border-radius: 999px;
-      background: linear-gradient(135deg, var(--accent-light), var(--accent), var(--accent-dark));
-      color: #090805;
       text-decoration: none;
       font-weight: 850;
-      transition: transform 220ms ease;
+      transition: transform 220ms ease, border-color 220ms ease, background 220ms ease;
     }
 
     a:hover {
       transform: translateY(-2px);
     }
 
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent-light), var(--accent), var(--accent-dark));
+      color: #090805;
+      box-shadow: 0 18px 45px rgba(184, 115, 74, 0.24);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--line);
+      color: var(--text);
+    }
+
+    .btn-secondary:hover {
+      border-color: rgba(184, 115, 74, 0.58);
+      background: rgba(184, 115, 74, 0.08);
+    }
+
     .small {
-      margin-top: 18px;
+      margin-top: 26px;
+      color: var(--muted-2);
       font-size: 0.9rem;
-      color: rgba(154, 166, 184, 0.78);
+      font-weight: 650;
+    }
+
+    @media (max-width: 560px) {
+      .actions {
+        flex-direction: column;
+      }
+
+      a {
+        width: 100%;
+      }
     }
   </style>
 </head>
 
 <body>
   <main class="card">
-    <div class="mark">D</div>
+    <a class="brand-logo" href="/" aria-label="Diviti Developments home">
+      <svg viewBox="0 0 365 74" xmlns="http://www.w3.org/2000/svg" role="img">
+        <defs>
+          <linearGradient id="divitiCopper" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#e0a15f"/>
+            <stop offset="45%" stop-color="#b8734a"/>
+            <stop offset="100%" stop-color="#70411f"/>
+          </linearGradient>
+        </defs>
+
+        <path d="M10 8H38C57 8 70 21 70 37C70 53 57 66 38 66H10V8Z"
+          fill="none"
+          stroke="#f6f6f4"
+          stroke-width="6"
+          stroke-linejoin="round"/>
+
+        <path d="M22 48V34L43 17V66H33V36L22 48Z"
+          fill="url(#divitiCopper)"/>
+
+        <path d="M43 17L56 29V66H46V33L43 30V17Z"
+          fill="#f6f6f4"
+          opacity="0.95"/>
+
+        <text x="88" y="41"
+          fill="#f6f6f4"
+          font-size="32"
+          font-family="Arial, Helvetica, sans-serif"
+          font-weight="700"
+          letter-spacing="8">DIVITI</text>
+
+        <text x="90" y="64"
+          fill="#b8734a"
+          font-size="11"
+          font-family="Arial, Helvetica, sans-serif"
+          font-weight="700"
+          letter-spacing="7">DEVELOPMENTS</text>
+      </svg>
+    </a>
+
+    <div class="success-mark" aria-hidden="true">
+      <svg viewBox="0 0 24 24">
+        <path d="M20 6L9 17l-5-5"></path>
+      </svg>
+    </div>
+
     <h1>Request sent.</h1>
+
     <p>
       Thanks for getting in touch. We’ll review your details and come back with the next step.
     </p>
-    <a href="/">Back to home</a>
+
+    <div class="actions">
+      <a href="/" class="btn-primary">Back to home</a>
+      <a href="/#pricing" class="btn-secondary">View pricing</a>
+    </div>
+
     <p class="small">Diviti Developments Limited</p>
   </main>
 </body>
