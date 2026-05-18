@@ -1,0 +1,1758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Diviti Developments | Premium Websites for Local Businesses</title>
+  <meta name="description" content="Premium custom-coded websites for local businesses. No upfront build fee. Pay monthly once you're happy and your website is live." />
+
+  <style>
+    :root {
+      --bg: #05070c;
+      --bg-soft: #0b1623;
+      --charcoal: #1c2430;
+      --card: rgba(255, 255, 255, 0.055);
+      --card-strong: rgba(255, 255, 255, 0.09);
+      --text: #f6f6f4;
+      --muted: #9aa6b8;
+      --muted-2: #697386;
+      --line: rgba(255, 255, 255, 0.12);
+
+      --accent: #b8734a;
+      --accent-light: #e0a15f;
+      --accent-dark: #70411f;
+      --stone: #e2e4e7;
+
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+      --radius: 26px;
+      --max: 1180px;
+      --transition: 220ms ease;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(184, 115, 74, 0.16), transparent 34rem),
+        radial-gradient(circle at top right, rgba(47, 128, 237, 0.08), transparent 30rem),
+        linear-gradient(180deg, #05070c 0%, #08111c 45%, #05070c 100%);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    textarea,
+    select {
+      font: inherit;
+    }
+
+    .page-wrap {
+      overflow: hidden;
+    }
+
+    .container {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 12px;
+      border: 1px solid rgba(184, 115, 74, 0.28);
+      border-radius: 999px;
+      color: var(--accent-light);
+      background: rgba(184, 115, 74, 0.075);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 18px rgba(184, 115, 74, 0.9);
+    }
+
+    .section {
+      padding: 104px 0;
+      position: relative;
+    }
+
+    .section-header {
+      max-width: 760px;
+      margin-bottom: 42px;
+    }
+
+    .section-header.center {
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    h1,
+    h2,
+    h3 {
+      letter-spacing: -0.055em;
+      line-height: 1.02;
+    }
+
+    h1 {
+      font-size: clamp(3.1rem, 8vw, 7.6rem);
+      max-width: 980px;
+      margin-top: 22px;
+      margin-bottom: 26px;
+    }
+
+    h2 {
+      font-size: clamp(2.2rem, 5vw, 4.4rem);
+      margin-top: 20px;
+      margin-bottom: 18px;
+    }
+
+    h3 {
+      font-size: 1.35rem;
+      margin-bottom: 12px;
+    }
+
+    p {
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .lead {
+      font-size: clamp(1.08rem, 2vw, 1.32rem);
+      max-width: 740px;
+      color: #d8dee8;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 52px;
+      padding: 0 22px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-weight: 850;
+      cursor: pointer;
+      transition: transform var(--transition), border-color var(--transition), background var(--transition), color var(--transition);
+      white-space: nowrap;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent-light), var(--accent), var(--accent-dark));
+      color: #090805;
+      box-shadow: 0 18px 45px rgba(184, 115, 74, 0.24);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: var(--line);
+      color: var(--text);
+    }
+
+    .btn-secondary:hover {
+      border-color: rgba(184, 115, 74, 0.58);
+      background: rgba(184, 115, 74, 0.08);
+    }
+
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      transition: background var(--transition), border-color var(--transition), backdrop-filter var(--transition);
+      border-bottom: 1px solid transparent;
+    }
+
+    .site-header.scrolled {
+      background: rgba(5, 7, 12, 0.78);
+      backdrop-filter: blur(18px);
+      border-bottom-color: rgba(255, 255, 255, 0.08);
+    }
+
+    .nav {
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+    }
+
+    .brand-logo {
+      width: 255px;
+      display: block;
+    }
+
+    .brand-logo svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      color: #d8dee8;
+      font-size: 0.92rem;
+      font-weight: 700;
+    }
+
+    .nav-links a {
+      transition: color var(--transition);
+    }
+
+    .nav-links a:hover {
+      color: var(--accent-light);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--text);
+      cursor: pointer;
+    }
+
+    .hero {
+      min-height: 100vh;
+      padding: 158px 0 86px;
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(184, 115, 74, 0.48), transparent);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 58px;
+      align-items: center;
+    }
+
+    .hero-copy {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 34px;
+      margin-bottom: 28px;
+    }
+
+    .hero-proof {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .hero-proof span {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hero-proof span::before {
+      content: "✓";
+      color: var(--accent-light);
+      font-weight: 900;
+    }
+
+    .hero-visual {
+      position: relative;
+      min-height: 620px;
+    }
+
+    .browser-card {
+      position: absolute;
+      inset: 26px 0 auto auto;
+      width: min(510px, 100%);
+      border: 1px solid rgba(255, 255, 255, 0.13);
+      border-radius: 30px;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.105), rgba(255, 255, 255, 0.04)),
+        rgba(11, 22, 35, 0.96);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      transform: rotate(2deg);
+    }
+
+    .browser-top {
+      height: 52px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0 18px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.35);
+    }
+
+    .browser-url {
+      margin-left: 10px;
+      flex: 1;
+      height: 26px;
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.28);
+      color: var(--muted-2);
+      display: flex;
+      align-items: center;
+      padding: 0 12px;
+      font-size: 0.78rem;
+    }
+
+    .mock-site {
+      padding: 26px;
+    }
+
+    .mock-hero {
+      border-radius: 22px;
+      padding: 28px;
+      background:
+        radial-gradient(circle at top right, rgba(184, 115, 74, 0.24), transparent 18rem),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.035));
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .mock-label {
+      width: 118px;
+      height: 14px;
+      border-radius: 999px;
+      background: rgba(184, 115, 74, 0.66);
+      margin-bottom: 22px;
+    }
+
+    .mock-title {
+      height: 24px;
+      width: 82%;
+      border-radius: 999px;
+      background: rgba(246, 246, 244, 0.84);
+      margin-bottom: 12px;
+    }
+
+    .mock-title.short {
+      width: 56%;
+    }
+
+    .mock-text {
+      height: 9px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.24);
+      margin-top: 14px;
+    }
+
+    .mock-text.wide {
+      width: 88%;
+    }
+
+    .mock-text.medium {
+      width: 70%;
+    }
+
+    .mock-buttons {
+      display: flex;
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    .mock-button {
+      height: 34px;
+      width: 122px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    .mock-button.secondary {
+      background: rgba(255, 255, 255, 0.12);
+      width: 96px;
+    }
+
+    .mock-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .mock-card {
+      height: 108px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.065);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 14px;
+    }
+
+    .mock-card::before {
+      content: "";
+      display: block;
+      width: 34px;
+      height: 34px;
+      border-radius: 12px;
+      background: rgba(184, 115, 74, 0.35);
+      margin-bottom: 18px;
+    }
+
+    .mock-card::after {
+      content: "";
+      display: block;
+      width: 76%;
+      height: 8px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.18);
+    }
+
+    .floating-card {
+      position: absolute;
+      left: 0;
+      bottom: 42px;
+      max-width: 320px;
+      padding: 22px;
+      border-radius: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.13);
+      background: rgba(11, 22, 35, 0.86);
+      backdrop-filter: blur(16px);
+      box-shadow: var(--shadow);
+      transform: rotate(-3deg);
+    }
+
+    .floating-card strong {
+      display: block;
+      font-size: 2.4rem;
+      letter-spacing: -0.06em;
+      line-height: 1;
+      color: var(--accent-light);
+      margin-bottom: 8px;
+    }
+
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(1px);
+      opacity: 0.85;
+    }
+
+    .orb.one {
+      width: 132px;
+      height: 132px;
+      right: 42px;
+      bottom: 42px;
+      background: radial-gradient(circle, rgba(184, 115, 74, 0.35), transparent 70%);
+    }
+
+    .orb.two {
+      width: 260px;
+      height: 260px;
+      left: 58px;
+      top: 72px;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.08), transparent 70%);
+    }
+
+    .proof-strip {
+      padding: 26px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.025);
+    }
+
+    .proof-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      align-items: center;
+    }
+
+    .proof-item {
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.035);
+      color: #d8dee8;
+      font-weight: 800;
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.07);
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.035));
+      padding: 28px;
+      box-shadow: 0 18px 60px rgba(0, 0, 0, 0.18);
+      transition: transform var(--transition), border-color var(--transition), background var(--transition);
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(184, 115, 74, 0.42);
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.04));
+    }
+
+    .icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 22px;
+      background: rgba(184, 115, 74, 0.12);
+      color: var(--accent-light);
+      border: 1px solid rgba(184, 115, 74, 0.24);
+      font-weight: 950;
+    }
+
+    .selected-build {
+      min-height: 320px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+      position: relative;
+      color: inherit;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .selected-build::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top right, rgba(184, 115, 74, 0.16), transparent 18rem);
+      pointer-events: none;
+    }
+
+    .selected-build:hover .build-bottom span:last-child {
+      transform: translateX(4px);
+    }
+
+    .build-tag {
+      display: inline-flex;
+      width: fit-content;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(184, 115, 74, 0.1);
+      color: var(--accent-light);
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 18px;
+    }
+
+    .build-bottom {
+      margin-top: 34px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255, 255, 255, 0.09);
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .build-bottom span:last-child {
+      color: var(--accent-light);
+      font-weight: 850;
+      transition: transform var(--transition);
+    }
+
+    .offer-panel {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 32px;
+      align-items: center;
+      padding: 40px;
+      border-radius: 36px;
+      border: 1px solid rgba(184, 115, 74, 0.28);
+      background:
+        radial-gradient(circle at top left, rgba(184, 115, 74, 0.18), transparent 24rem),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.035));
+      box-shadow: var(--shadow);
+    }
+
+    .offer-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .offer-point {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      padding: 16px;
+      border-radius: 18px;
+      background: rgba(0, 0, 0, 0.18);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .tick {
+      width: 26px;
+      height: 26px;
+      flex: 0 0 26px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: rgba(184, 115, 74, 0.18);
+      color: var(--accent-light);
+      font-weight: 950;
+    }
+
+    .offer-point strong {
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .price-card {
+      position: relative;
+      padding: 30px;
+      border-radius: 28px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.045);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .price-card.featured {
+      border-color: rgba(184, 115, 74, 0.58);
+      background:
+        radial-gradient(circle at top, rgba(184, 115, 74, 0.21), transparent 20rem),
+        rgba(255, 255, 255, 0.065);
+      box-shadow: 0 24px 90px rgba(184, 115, 74, 0.13);
+      transform: translateY(-10px);
+    }
+
+    .badge {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--accent-light), var(--accent));
+      color: #100d07;
+      font-size: 0.72rem;
+      font-weight: 950;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .price-name {
+      font-size: 1.25rem;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      margin-bottom: 10px;
+    }
+
+    .price {
+      font-size: 3.1rem;
+      line-height: 1;
+      letter-spacing: -0.07em;
+      font-weight: 950;
+      margin: 22px 0 8px;
+    }
+
+    .price span {
+      font-size: 1rem;
+      letter-spacing: 0;
+      color: var(--muted);
+      font-weight: 800;
+    }
+
+    .after-price {
+      color: var(--accent-light);
+      font-weight: 850;
+      margin-bottom: 24px;
+    }
+
+    .features {
+      display: grid;
+      gap: 12px;
+      margin: 22px 0 28px;
+      flex: 1;
+    }
+
+    .features li {
+      list-style: none;
+      display: flex;
+      gap: 10px;
+      color: #d8dee8;
+      font-size: 0.96rem;
+    }
+
+    .features li::before {
+      content: "✓";
+      color: var(--accent-light);
+      font-weight: 950;
+    }
+
+    .small-note {
+      font-size: 0.85rem;
+      color: var(--muted-2);
+      margin-top: 14px;
+    }
+
+    .process-list {
+      display: grid;
+      gap: 14px;
+      counter-reset: step;
+    }
+
+    .process-step {
+      counter-increment: step;
+      display: grid;
+      grid-template-columns: 76px 1fr;
+      gap: 20px;
+      padding: 24px;
+      border-radius: 24px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.045);
+    }
+
+    .process-step::before {
+      content: counter(step, decimal-leading-zero);
+      width: 58px;
+      height: 58px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      background: rgba(184, 115, 74, 0.12);
+      color: var(--accent-light);
+      font-weight: 950;
+      border: 1px solid rgba(184, 115, 74, 0.24);
+    }
+
+    .faq {
+      max-width: 860px;
+      margin: 0 auto;
+      display: grid;
+      gap: 12px;
+    }
+
+    .faq-item {
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.045);
+    }
+
+    .faq-question {
+      width: 100%;
+      padding: 22px;
+      background: transparent;
+      border: 0;
+      color: var(--text);
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      text-align: left;
+      cursor: pointer;
+      font-weight: 850;
+    }
+
+    .faq-question span:last-child {
+      color: var(--accent-light);
+      font-size: 1.35rem;
+      line-height: 1;
+      transition: transform var(--transition);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 260ms ease;
+    }
+
+    .faq-answer p {
+      padding: 0 22px 22px;
+    }
+
+    .faq-item.active .faq-answer {
+      max-height: 260px;
+    }
+
+    .faq-item.active .faq-question span:last-child {
+      transform: rotate(45deg);
+    }
+
+    .contact-panel {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 28px;
+      padding: 38px;
+      border-radius: 36px;
+      border: 1px solid rgba(184, 115, 74, 0.28);
+      background:
+        radial-gradient(circle at top right, rgba(184, 115, 74, 0.16), transparent 24rem),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.035));
+      box-shadow: var(--shadow);
+    }
+
+    .contact-details {
+      display: grid;
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .contact-detail {
+      padding: 16px;
+      border-radius: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(0, 0, 0, 0.17);
+    }
+
+    .contact-detail strong {
+      display: block;
+      color: var(--accent-light);
+      margin-bottom: 4px;
+    }
+
+    form {
+      display: grid;
+      gap: 14px;
+    }
+
+    .field-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    label {
+      display: grid;
+      gap: 8px;
+      color: #d8dee8;
+      font-weight: 750;
+      font-size: 0.92rem;
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      border: 1px solid rgba(255, 255, 255, 0.13);
+      border-radius: 16px;
+      background: rgba(0, 0, 0, 0.24);
+      color: var(--text);
+      padding: 14px 15px;
+      outline: none;
+      transition: border-color var(--transition), background var(--transition);
+    }
+
+    select {
+      appearance: none;
+    }
+
+    textarea {
+      min-height: 130px;
+      resize: vertical;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      border-color: rgba(184, 115, 74, 0.62);
+      background: rgba(0, 0, 0, 0.34);
+    }
+
+    ::placeholder {
+      color: rgba(255, 255, 255, 0.38);
+    }
+
+    .footer {
+      padding: 34px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--muted-2);
+    }
+
+    .footer-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      font-size: 0.92rem;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    @media (max-width: 980px) {
+      .brand-logo {
+        width: 230px;
+      }
+
+      .nav-links,
+      .nav-actions .btn {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: grid;
+        place-items: center;
+      }
+
+      .nav-links.open {
+        display: flex;
+        position: absolute;
+        top: 76px;
+        left: 20px;
+        right: 20px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+        padding: 12px;
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        background: rgba(5, 7, 12, 0.96);
+        backdrop-filter: blur(18px);
+        box-shadow: var(--shadow);
+      }
+
+      .nav-links.open a {
+        width: 100%;
+        padding: 14px;
+        border-radius: 12px;
+      }
+
+      .nav-links.open a:hover {
+        background: rgba(255, 255, 255, 0.05);
+      }
+
+      .hero {
+        padding-top: 128px;
+      }
+
+      .hero-grid,
+      .offer-panel,
+      .contact-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-visual {
+        min-height: 520px;
+      }
+
+      .browser-card {
+        right: auto;
+        left: 0;
+      }
+
+      .grid-3,
+      .pricing-grid,
+      .proof-row {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .price-card.featured {
+        transform: none;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .container {
+        width: min(var(--max), calc(100% - 28px));
+      }
+
+      .brand-logo {
+        width: 205px;
+      }
+
+      .section {
+        padding: 76px 0;
+      }
+
+      .hero {
+        min-height: auto;
+        padding-bottom: 66px;
+      }
+
+      .hero-grid {
+        gap: 34px;
+      }
+
+      .hero-visual {
+        min-height: 430px;
+      }
+
+      .browser-card {
+        transform: none;
+      }
+
+      .floating-card {
+        left: 12px;
+        bottom: 0;
+        max-width: 270px;
+      }
+
+      .mock-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .mock-card:nth-child(2),
+      .mock-card:nth-child(3) {
+        display: none;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .grid-3,
+      .grid-2,
+      .pricing-grid,
+      .proof-row,
+      .field-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .offer-panel,
+      .contact-panel {
+        padding: 24px;
+        border-radius: 26px;
+      }
+
+      .process-step {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-row {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page-wrap">
+    <header class="site-header" id="siteHeader">
+      <div class="container">
+        <nav class="nav" aria-label="Main navigation">
+          <a href="#top" class="brand" aria-label="Diviti Developments home">
+            <span class="brand-logo" aria-hidden="true">
+              <svg viewBox="0 0 365 74" xmlns="http://www.w3.org/2000/svg" role="img">
+                <defs>
+                  <linearGradient id="divitiCopper" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#e0a15f"/>
+                    <stop offset="45%" stop-color="#b8734a"/>
+                    <stop offset="100%" stop-color="#70411f"/>
+                  </linearGradient>
+                </defs>
+
+                <path d="M10 8H38C57 8 70 21 70 37C70 53 57 66 38 66H10V8Z"
+                  fill="none"
+                  stroke="#f6f6f4"
+                  stroke-width="6"
+                  stroke-linejoin="round"/>
+
+                <path d="M22 48V34L43 17V66H33V36L22 48Z"
+                  fill="url(#divitiCopper)"/>
+
+                <path d="M43 17L56 29V66H46V33L43 30V17Z"
+                  fill="#f6f6f4"
+                  opacity="0.95"/>
+
+                <text x="88" y="41"
+                  fill="#f6f6f4"
+                  font-size="32"
+                  font-family="Arial, Helvetica, sans-serif"
+                  font-weight="700"
+                  letter-spacing="8">DIVITI</text>
+
+                <text x="90" y="64"
+                  fill="#b8734a"
+                  font-size="11"
+                  font-family="Arial, Helvetica, sans-serif"
+                  font-weight="700"
+                  letter-spacing="7">DEVELOPMENTS</text>
+              </svg>
+            </span>
+          </a>
+
+          <div class="nav-links" id="navLinks">
+            <a href="#builds">Builds</a>
+            <a href="#offer">Offer</a>
+            <a href="#services">Services</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#process">Process</a>
+            <a href="#faq">FAQ</a>
+          </div>
+
+          <div class="nav-actions">
+            <a href="#contact" class="btn btn-secondary">Free preview</a>
+            <button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="container">
+          <div class="hero-grid">
+            <div class="hero-copy">
+              <span class="eyebrow">Custom-coded websites for local businesses</span>
+
+              <h1>Premium websites for local businesses. No upfront build fee.</h1>
+
+              <p class="lead">
+                We design, build and launch modern websites that make your business look sharper,
+                more credible and easier to enquire with. You only start paying once you’re happy
+                and your site is live.
+              </p>
+
+              <div class="hero-actions">
+                <a href="#contact" class="btn btn-primary">Get my free website preview</a>
+                <a href="#pricing" class="btn btn-secondary">View pricing</a>
+              </div>
+
+              <div class="hero-proof">
+                <span>No big upfront cost</span>
+                <span>Mobile-first build</span>
+                <span>Hosting and maintenance included</span>
+              </div>
+            </div>
+
+            <div class="hero-visual" aria-hidden="true">
+              <div class="orb one"></div>
+              <div class="orb two"></div>
+
+              <div class="browser-card">
+                <div class="browser-top">
+                  <span class="dot"></span>
+                  <span class="dot"></span>
+                  <span class="dot"></span>
+                  <div class="browser-url">divitidevelopments.co.uk</div>
+                </div>
+
+                <div class="mock-site">
+                  <div class="mock-hero">
+                    <div class="mock-label"></div>
+                    <div class="mock-title"></div>
+                    <div class="mock-title short"></div>
+                    <div class="mock-text wide"></div>
+                    <div class="mock-text medium"></div>
+                    <div class="mock-buttons">
+                      <div class="mock-button"></div>
+                      <div class="mock-button secondary"></div>
+                    </div>
+                  </div>
+
+                  <div class="mock-grid">
+                    <div class="mock-card"></div>
+                    <div class="mock-card"></div>
+                    <div class="mock-card"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="floating-card">
+                <strong>0%</strong>
+                <p>upfront build fee until you’re happy and the website is live.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="proof-strip">
+        <div class="container">
+          <div class="proof-row">
+            <div class="proof-item">Fast loading</div>
+            <div class="proof-item">Mobile-first</div>
+            <div class="proof-item">SEO basics included</div>
+            <div class="proof-item">Small updates covered</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="builds">
+        <div class="container">
+          <div class="section-header">
+            <span class="eyebrow">Selected builds</span>
+            <h2>Websites that look like the business is worth trusting.</h2>
+            <p>
+              Your website is usually the first impression. If it looks old, slow or thrown together,
+              people assume the same about the business.
+            </p>
+          </div>
+
+          <div class="grid-3">
+            <a class="card selected-build" href="https://retfordhall.co.uk/" target="_blank" rel="noopener">
+              <div>
+                <span class="build-tag">Property</span>
+                <h3>Retford Hall</h3>
+                <p>
+                  A modern rebuild for a local office building, focused on credibility, clear enquiries
+                  and a cleaner presentation of the space.
+                </p>
+              </div>
+              <div class="build-bottom">
+                <span>Local business</span>
+                <span>View site →</span>
+              </div>
+            </a>
+
+            <a class="card selected-build" href="https://pumpbar.uk/" target="_blank" rel="noopener">
+              <div>
+                <span class="build-tag">Product</span>
+                <h3>Pump Bar</h3>
+                <p>
+                  A sharp landing page for a functional chocolate brand, built to capture interest
+                  and give the product a premium first impression.
+                </p>
+              </div>
+              <div class="build-bottom">
+                <span>Startup brand</span>
+                <span>View site →</span>
+              </div>
+            </a>
+
+            <a class="card selected-build" href="https://himitsuevents.com/" target="_blank" rel="noopener">
+              <div>
+                <span class="build-tag">Events</span>
+                <h3>Himitsu Events</h3>
+                <p>
+                  A clean website for an events business, designed to make services clear and give
+                  clients a simple route to enquire.
+                </p>
+              </div>
+              <div class="build-bottom">
+                <span>Service business</span>
+                <span>View site →</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="offer">
+        <div class="container">
+          <div class="offer-panel">
+            <div>
+              <span class="eyebrow">The offer</span>
+              <h2>No fee until you’re happy and your website is live.</h2>
+              <p class="lead">
+                You do not pay a big agency-style build fee. We create the site, refine it with you,
+                launch it properly, then you pay monthly.
+              </p>
+
+              <div class="hero-actions">
+                <a href="#contact" class="btn btn-primary">Request a free preview</a>
+              </div>
+            </div>
+
+            <div class="offer-list">
+              <div class="offer-point">
+                <span class="tick">✓</span>
+                <div>
+                  <strong>Lower risk</strong>
+                  <p>No large upfront invoice before you have seen the finished result.</p>
+                </div>
+              </div>
+
+              <div class="offer-point">
+                <span class="tick">✓</span>
+                <div>
+                  <strong>Built properly</strong>
+                  <p>Custom-coded websites, not bloated drag and drop templates.</p>
+                </div>
+              </div>
+
+              <div class="offer-point">
+                <span class="tick">✓</span>
+                <div>
+                  <strong>Look premium</strong>
+                  <p>Modern design that makes your business feel sharper and more credible.</p>
+                </div>
+              </div>
+
+              <div class="offer-point">
+                <span class="tick">✓</span>
+                <div>
+                  <strong>Handled for you</strong>
+                  <p>Hosting, maintenance and small updates are included in the monthly plan.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="services">
+        <div class="container">
+          <div class="section-header center">
+            <span class="eyebrow">Services</span>
+            <h2>Everything a local business website actually needs.</h2>
+            <p>
+              Clean design, clear messaging, fast pages and a simple route for customers to enquire.
+            </p>
+          </div>
+
+          <div class="grid-3">
+            <div class="card">
+              <div class="icon">01</div>
+              <h3>Website design</h3>
+              <p>Premium layouts, strong first impressions and clear sections that guide visitors towards action.</p>
+            </div>
+
+            <div class="card">
+              <div class="icon">02</div>
+              <h3>Custom development</h3>
+              <p>Fast, responsive, mobile-first builds coded cleanly and deployed properly.</p>
+            </div>
+
+            <div class="card">
+              <div class="icon">03</div>
+              <h3>Copy and structure</h3>
+              <p>Sharper headlines, cleaner service explanations and less waffle across the whole site.</p>
+            </div>
+
+            <div class="card">
+              <div class="icon">04</div>
+              <h3>Hosting setup</h3>
+              <p>Deployment, domain connection, SSL and basic technical setup handled for you.</p>
+            </div>
+
+            <div class="card">
+              <div class="icon">05</div>
+              <h3>Maintenance</h3>
+              <p>Ongoing hosting, checks, small content updates and minor edits included.</p>
+            </div>
+
+            <div class="card">
+              <div class="icon">06</div>
+              <h3>SEO basics</h3>
+              <p>Page titles, descriptions, clean structure and local search foundations included from the start.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="pricing">
+        <div class="container">
+          <div class="section-header center">
+            <span class="eyebrow">Pricing</span>
+            <h2>Premium websites without agency pricing.</h2>
+            <p>
+              Simple monthly pricing. Build, launch, hosting, maintenance and small updates included.
+            </p>
+          </div>
+
+          <div class="pricing-grid">
+            <article class="price-card">
+              <div class="price-name">Starter</div>
+              <p>Best for small local businesses that need a sharp online presence.</p>
+
+              <div class="price">£99<span>/month</span></div>
+              <div class="after-price">For 5 months, then £39/month maintenance</div>
+
+              <ul class="features">
+                <li>One-page premium website</li>
+                <li>Mobile-first design</li>
+                <li>Contact CTA section</li>
+                <li>Basic SEO setup</li>
+                <li>Hosting included</li>
+                <li>Small updates included</li>
+              </ul>
+
+              <a href="#contact" class="btn btn-secondary">Choose Starter</a>
+            </article>
+
+            <article class="price-card featured">
+              <div class="badge">Most popular</div>
+
+              <div class="price-name">Business</div>
+              <p>Best for businesses that want a fuller, more credible site.</p>
+
+              <div class="price">£149<span>/month</span></div>
+              <div class="after-price">For 5 months, then £49/month maintenance</div>
+
+              <ul class="features">
+                <li>Multi-section business website</li>
+                <li>Services, process and FAQ sections</li>
+                <li>Stronger conversion structure</li>
+                <li>Contact form setup</li>
+                <li>SEO basics included</li>
+                <li>Hosting and maintenance included</li>
+              </ul>
+
+              <a href="#contact" class="btn btn-primary">Choose Business</a>
+            </article>
+
+            <article class="price-card">
+              <div class="price-name">Premium</div>
+              <p>Best for businesses that want a high-end flagship website.</p>
+
+              <div class="price">£249<span>/month</span></div>
+              <div class="after-price">For 5 months, then £79/month maintenance</div>
+
+              <ul class="features">
+                <li>Premium bespoke design</li>
+                <li>More advanced sections</li>
+                <li>Stronger visuals and animations</li>
+                <li>Portfolio, gallery or case study layouts</li>
+                <li>Priority updates</li>
+                <li>Hosting and maintenance included</li>
+              </ul>
+
+              <a href="#contact" class="btn btn-secondary">Choose Premium</a>
+            </article>
+          </div>
+
+          <p class="small-note">
+            Pricing is designed for straightforward local business websites. More complex functionality can be quoted separately.
+          </p>
+        </div>
+      </section>
+
+      <section class="section" id="process">
+        <div class="container">
+          <div class="grid-2">
+            <div class="section-header">
+              <span class="eyebrow">Process</span>
+              <h2>A cleaner way to get your new website live.</h2>
+              <p>
+                No endless agency calls. No confusing tech. Just a sharper website built around what your business needs.
+              </p>
+            </div>
+
+            <div class="process-list">
+              <div class="process-step">
+                <div>
+                  <h3>Quick brief</h3>
+                  <p>We learn what your business does, what needs changing and what customers need to understand quickly.</p>
+                </div>
+              </div>
+
+              <div class="process-step">
+                <div>
+                  <h3>Free preview</h3>
+                  <p>You get an initial website direction so you can see the standard before committing.</p>
+                </div>
+              </div>
+
+              <div class="process-step">
+                <div>
+                  <h3>Build and refine</h3>
+                  <p>The site is built, reviewed and adjusted until it feels right for the business.</p>
+                </div>
+              </div>
+
+              <div class="process-step">
+                <div>
+                  <h3>Launch and maintain</h3>
+                  <p>Once you’re happy, the site goes live and the monthly plan begins.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="why">
+        <div class="container">
+          <div class="section-header center">
+            <span class="eyebrow">Why Diviti</span>
+            <h2>Because most local business websites look worse than the businesses behind them.</h2>
+            <p>
+              A good website does not need to be complicated. It needs to load quickly, look premium,
+              explain the offer clearly and make it easy for people to get in touch.
+            </p>
+          </div>
+
+          <div class="grid-3">
+            <div class="card">
+              <h3>No template feel</h3>
+              <p>Designed around the business, not forced into the same generic layout as everyone else.</p>
+            </div>
+
+            <div class="card">
+              <h3>No agency bloat</h3>
+              <p>Clean, direct process with pricing that makes sense for local businesses.</p>
+            </div>
+
+            <div class="card">
+              <h3>No dead website</h3>
+              <p>The site stays hosted, maintained and updated instead of being abandoned after launch.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="faq">
+        <div class="container">
+          <div class="section-header center">
+            <span class="eyebrow">FAQ</span>
+            <h2>Simple answers before we start.</h2>
+          </div>
+
+          <div class="faq">
+            <div class="faq-item active">
+              <button class="faq-question" type="button">
+                <span>Do I really pay nothing upfront?</span>
+                <span>+</span>
+              </button>
+              <div class="faq-answer">
+                <p>Yes. There is no build fee until you’re happy and the website is live. The monthly plan starts after launch.</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                <span>What happens after the first 5 months?</span>
+                <span>+</span>
+              </button>
+              <div class="faq-answer">
+                <p>The price drops to the ongoing maintenance fee for your package. That covers hosting, maintenance and small updates.</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                <span>Are the sites custom-coded?</span>
+                <span>+</span>
+              </button>
+              <div class="faq-answer">
+                <p>Yes. The sites are built cleanly using code, which keeps them fast, flexible and free from bloated drag and drop builders.</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                <span>Can you update my existing website?</span>
+                <span>+</span>
+              </button>
+              <div class="faq-answer">
+                <p>Usually, yes. In most cases it makes sense to rebuild the site properly rather than trying to patch an outdated one.</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                <span>What counts as a small update?</span>
+                <span>+</span>
+              </button>
+              <div class="faq-answer">
+                <p>Things like text changes, swapping images, updating contact details, adding a small section or changing opening hours.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="contact">
+        <div class="container">
+          <div class="contact-panel">
+            <div>
+              <span class="eyebrow">Start here</span>
+              <h2>Get your free website preview.</h2>
+              <p>
+                Send over a few details and we’ll look at how your current online presence could be made sharper.
+              </p>
+
+              <div class="contact-details">
+                <div class="contact-detail">
+                  <strong>Best for</strong>
+                  <p>Local service businesses, property businesses, trades, gyms, clinics, events and startups.</p>
+                </div>
+
+                <div class="contact-detail">
+                  <strong>Offer</strong>
+                  <p>No fee until you’re happy and your website is live.</p>
+                </div>
+              </div>
+            </div>
+
+            <form name="website-preview" method="POST" data-netlify="true" action="/success.html">
+              <input type="hidden" name="form-name" value="website-preview" />
+
+              <div class="field-grid">
+                <label>
+                  Name
+                  <input type="text" name="name" placeholder="Your name" required />
+                </label>
+
+                <label>
+                  Business name
+                  <input type="text" name="business" placeholder="Business name" required />
+                </label>
+              </div>
+
+              <div class="field-grid">
+                <label>
+                  Email
+                  <input type="email" name="email" placeholder="you@email.com" required />
+                </label>
+
+                <label>
+                  Current website
+                  <input type="url" name="website" placeholder="https://..." />
+                </label>
+              </div>
+
+              <label>
+                Package interest
+                <select name="package">
+                  <option value="Not sure yet">Not sure yet</option>
+                  <option value="Starter">Starter</option>
+                  <option value="Business">Business</option>
+                  <option value="Premium">Premium</option>
+                </select>
+              </label>
+
+              <label>
+                What do you need?
+                <textarea name="message" placeholder="Tell us what your business does and what you want the website to achieve." required></textarea>
+              </label>
+
+              <button class="btn btn-primary" type="submit">Send request</button>
+
+              <p class="small-note">
+                This form is ready for Netlify Forms. Keep the success.html file in the same folder.
+              </p>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-row">
+          <p>© <span id="year"></span> Diviti Developments Limited. Premium websites for local businesses.</p>
+          <div class="footer-links">
+            <a href="#pricing">Pricing</a>
+            <a href="#contact">Contact</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const siteHeader = document.getElementById("siteHeader");
+    const menuToggle = document.getElementById("menuToggle");
+    const navLinks = document.getElementById("navLinks");
+    const year = document.getElementById("year");
+
+    year.textContent = new Date().getFullYear();
+
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 20) {
+        siteHeader.classList.add("scrolled");
+      } else {
+        siteHeader.classList.remove("scrolled");
+      }
+    });
+
+    menuToggle.addEventListener("click", () => {
+      navLinks.classList.toggle("open");
+      menuToggle.textContent = navLinks.classList.contains("open") ? "×" : "☰";
+    });
+
+    document.querySelectorAll(".nav-links a").forEach((link) => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+        menuToggle.textContent = "☰";
+      });
+    });
+
+    document.querySelectorAll(".faq-question").forEach((button) => {
+      button.addEventListener("click", () => {
+        const item = button.closest(".faq-item");
+        item.classList.toggle("active");
+      });
+    });
+  </script>
+</body>
+</html>
