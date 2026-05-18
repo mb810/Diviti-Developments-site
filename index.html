@@ -1,4 +1,4 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -18,12 +18,10 @@
       --muted: #9aa6b8;
       --muted-2: #697386;
       --line: rgba(255, 255, 255, 0.12);
-
       --accent: #b8734a;
       --accent-light: #e0a15f;
       --accent-dark: #70411f;
       --stone: #e2e4e7;
-
       --shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
       --radius: 26px;
       --max: 1180px;
@@ -991,6 +989,10 @@
       gap: 14px;
     }
 
+    .hidden-netlify-form {
+      display: none;
+    }
+
     .field-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -1213,6 +1215,22 @@
 </head>
 
 <body>
+  <form name="website-preview" netlify netlify-honeypot="bot-field" hidden class="hidden-netlify-form">
+    <input type="hidden" name="form-name" value="website-preview" />
+    <input name="bot-field" />
+    <input type="text" name="name" />
+    <input type="text" name="business" />
+    <input type="email" name="email" />
+    <input type="url" name="website" />
+    <select name="package">
+      <option value="Not sure yet">Not sure yet</option>
+      <option value="Starter">Starter</option>
+      <option value="Business">Business</option>
+      <option value="Premium">Premium</option>
+    </select>
+    <textarea name="message"></textarea>
+  </form>
+
   <div class="page-wrap">
     <header class="site-header" id="siteHeader">
       <div class="container">
@@ -1443,7 +1461,7 @@
               <div class="offer-point">
                 <span class="tick">✓</span>
                 <div>
-                  <strong>Lower risk</strong>
+                  <strong>Zero risk</strong>
                   <p>No large upfront invoice before you have seen the finished result.</p>
                 </div>
               </div>
@@ -1459,7 +1477,7 @@
               <div class="offer-point">
                 <span class="tick">✓</span>
                 <div>
-                  <strong>Look premium</strong>
+                  <strong>Premium</strong>
                   <p>Modern design that makes your business feel sharper and more credible.</p>
                 </div>
               </div>
