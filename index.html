@@ -1734,7 +1734,7 @@
 
         <div class="price-main">
   <div class="price">£89<span>/month</span></div>
-  <<div class="price-period">ongoing after the first 5 months</div>
+  <div class="price-period">ongoing after the first 5 months</div>
 </div>
 
 <div class="maintenance-box">
@@ -2082,4 +2082,20 @@ if (contactForm) {
 
     const formData = new FormData(contactForm);
 
-  
+    try {
+      await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(formData).toString(),
+      });
+
+      window.location.href = "/success.html";
+    } catch (error) {
+      console.error("Form submission failed:", error);
+      alert("Sorry, something went wrong. Please try again or email us directly.");
+    }
+  });
+}
+  </script>
+</body>
+</html>
