@@ -6,7 +6,15 @@
 
   <title>Diviti Developments | Premium Websites for Local Businesses</title>
   <meta name="description" content="Premium custom-coded websites for local businesses. No upfront build fee. Pay monthly once you're happy and your website is live." />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SZS8LE70LH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
+  gtag('config', 'G-SZS8LE70LH');
+</script>
   <style>
     :root {
       --bg: #05070c;
@@ -1996,10 +2004,13 @@
                 </label>
 
                 <label>
-                  Current website
-                  <input type="url" name="website" placeholder="https://..." />
-                </label>
-              </div>
+  Current website <span style="opacity: 0.6;">(optional)</span>
+  <input
+    type="text"
+    name="website"
+    placeholder="Paste your website link, or leave blank"
+  >
+</label>
 
               <label>
                 Package interest
